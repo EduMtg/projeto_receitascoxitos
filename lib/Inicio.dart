@@ -44,15 +44,28 @@ class _PesquisaState extends State<Inicio> {
     return Scaffold(
       backgroundColor: const Color(0xFFFDF6ED),
       appBar: AppBar(
+        toolbarHeight: 90,
+        centerTitle: false,
+        titleSpacing: 12,
         title: const Text(
           "Coxitos",
           style: TextStyle(
             color: Color(0xFFFDF6ED),
-            fontWeight: FontWeight.bold,
-            fontSize: 30,
+            fontSize: 38,
+            fontWeight: FontWeight.w900,
+            letterSpacing: 1.5,
           ),
         ),
         backgroundColor: const Color(0xFF778873),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 12),
+            child: Image.asset(
+              'assets/LogoCoxitos.png',
+              height: 80,
+            ),
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(8),
