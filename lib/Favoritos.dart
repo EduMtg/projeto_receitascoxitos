@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
+import 'Receita.dart';
+import 'ListaReceitas.dart';
 
 class Favoritos extends StatelessWidget {
-  const Favoritos({super.key});
+  const Favoritos({
+    super.key,
+    required this.favoritos,
+    required this.aoFavoritar,
+  });
+
+  final List<Receita> favoritos;
+  final void Function(Receita) aoFavoritar;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +40,16 @@ class Favoritos extends StatelessWidget {
           ),
         ],
       ),
-      body: const Center(child: Text("Nenhuma receita favoritada ainda")),
+      body: favoritos.isEmpty
+          ? const Center(child: Text("Nenhuma receita favoritada ainda"))
+          : Padding(
+        padding: const EdgeInsets.all(12),
+        child: ListaReceitas(
+          receitas: favoritos,
+          favoritos: favoritos,
+          aoFavoritar: aoFavoritar,
+        ),
+      ),
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'Receita.dart';
 import 'Inicio.dart';
 import 'Favoritos.dart';
 
@@ -11,18 +12,29 @@ class Guia extends StatefulWidget {
 
 class _GuiaState extends State<Guia> {
   int indice = 0;
+  List<Receita> favoritos = [];
 
-  final List<Widget> telas = const [
-    Inicio(),
-    Favoritos(),
-  ];
+  void alternarFavorito(Receita receita) {
+    setState(() {
+      final posicao = favoritos.indexWhere((f) => f.id == receita.id);
+      if (posicao == -1) {
+        favoritos.add(receita);
+      } else {
+        favoritos.removeAt(posicao);
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: IndexedStack(
         index: indice,
-        children: telas,
+        children: [
+          Inicio(favoritos: favoritos, aoFavoritar: alternarFavorito),
+          Favoritos(favoritos: favoritos, aoFavoritar: alternarFavorito),
+        ],
       ),
       bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(
