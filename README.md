@@ -14,7 +14,7 @@ preparo, além de possibilitar o usuário a salvar suas receitas favoritas.
 
 ## Dependências e SDK:
 + __Flutter__: 3.50.0
-+ __SDK__: 3.13.5
++ __Dart__: 3.13.5
 + __http__: 1.6.0
 
 ## Instruções de Execução:
